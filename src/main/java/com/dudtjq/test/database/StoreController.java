@@ -14,14 +14,14 @@ import com.dudtjq.test.database.model.Store;
 public class StoreController {
 
 	@Autowired
-	private StoreBO StoreBO;
+	private StoreBO storeBO;
 	
 	@RequestMapping("/database/test01")
 	@ResponseBody
 	public List<Store> test01() {
 		
 		// used_goods 목록 가지고 오기
-		List<Store> storeList = StoreBO.getStoreList();
+		List<Store> storeList = storeBO.getStoreList();
 		
 		return storeList;
 		

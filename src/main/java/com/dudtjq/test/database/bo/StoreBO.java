@@ -11,6 +11,7 @@ import com.dudtjq.test.database.model.Store;
 @Service
 public class StoreBO {
 	
+	// springframework에게 맡김
 	@Autowired
 	private StoreDAO storeDAO;
 	
