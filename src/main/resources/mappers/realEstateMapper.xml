@@ -23,6 +23,118 @@
 		WHERE
 		 `id` = #{id}
   	</select>
-  
-  
+ 	
+ 	<select id="selectRealEstateRentPrice" resultType="com.dudtjq.test.mybatis.model.RealEstate"
+ 	parameterType="int">
+ 		
+ 		SELECT
+			`id`
+			, `realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`real_estate`
+ 		WHERE	
+ 			<![CDATA[
+ 			
+ 			`rentPrice` < #{rentPrice}
+ 			
+ 			]]>
+ 			
+ 	
+ 	</select>
+ 	
+ 	<select id="selectRealEstateAreaPrice" resultType="com.dudtjq.test.mybatis.model.RealEstate"
+ 	parameterType="map">
+ 	
+		 	SELECT
+				`id`
+				, `realtorId`
+				, `address`
+				, `area`
+				, `type`
+				, `price`
+				, `rentPrice`
+				, `createdAt`
+				, `updatedAt`
+			FROM
+				`real_estate`
+		 	WHERE	
+		 		<![CDATA[
+		 		
+		 			`area` >= #{area}
+		 			
+		 		AND
+		 		
+		 			`price` <= #{price}
+		 			
+		 		]]>
+ 	
+ 	</select>
+ 	
+ 	<!-- 객체로 insert -->
+ 	 	<insert id="insertRealEstateByObject" parameterType="com.dudtjq.test.mybatis.model.RealEstate">
+ 		INSERT INTO
+			`real_estate`
+			(
+				`realtorId`
+				, `address`
+				, `area`
+				, `type`
+				, `price`
+				, `createdAt`
+				, `updatedAt`
+			)
+			VALUE
+			(
+				#{realtorId}
+ 				, #{address}
+ 				, #{area}
+ 				, #{type}
+ 				, #{price}
+ 				, now()
+ 				, now()
+			)
+ 	
+ 	</insert> 
+ 	
+ 	<!-- 객체 없이 insert -->
+ 	<insert id="insertRealEstate" parameterType="map">
+ 		INSERT INTO
+			`real_estate`
+			(
+				`realtorId`
+				, `address`
+				, `area`
+				, `type`
+				, `price`
+				, `rentPrice`
+				, `createdAt`
+				, `updatedAt`
+			)
+			VALUE
+ 			(
+ 				#{realtorId}
+ 				, #{address}
+ 				, #{area}
+ 				, #{type}
+ 				, #{price}
+ 				, #{rentPrice}
+ 				, now()
+ 				, now()
+ 			)
+ 			
+ 	</insert>
+ 
+
+ 
   </mapper>
+  
+  
+  
+  
