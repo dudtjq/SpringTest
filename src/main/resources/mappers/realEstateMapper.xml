@@ -131,6 +131,38 @@
  			
  	</insert>
  
+ 	<update id="updateRealEstate" parameterType="map">
+ 		
+ 		UPDATE 
+ 		
+ 			`real_estate`
+ 		
+		SET
+		
+		<![CDATA[
+			
+		 	`type` = #{type}, `price` = #{price}, `updatedAt` = now()
+		 
+			WHERE `id` = #{id};
+		
+		]]>
+ 	</update>
+
+	<delete id="deleteRealEstate" parameterType="int">
+	
+	 	DELETE
+	 	
+    		FROM `real_estate`
+    		
+   		WHERE
+   		 
+   		 <![CDATA[
+   		 
+        	`id` = #{id}
+        
+        ]]>
+	
+	</delete>
 
  
   </mapper>

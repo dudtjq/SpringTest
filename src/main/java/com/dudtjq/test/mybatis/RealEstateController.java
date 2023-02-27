@@ -65,7 +65,7 @@ public class RealEstateController {
 		return "입력 성공 : " + count;
 	}
 	
-	// 객체 없이 insert 하기
+	// 객체 없이 insert 하기, realtorId가 parameter를 통해 전달 받는 메소드
 	@ResponseBody
 	@RequestMapping("/test02/2")
 	public String addRealEstate(@RequestParam("realtorId") int realtorId) {
@@ -74,5 +74,28 @@ public class RealEstateController {
 		 
 		return "입력 결과 : " + count;
 	}
+	
+	// 파리미터 없이 바로 맵핑 진행 가능!
+	@ResponseBody
+	@RequestMapping("/test03/1")
+	public String updateRealEstate() {
+		
+		int count = realEstateBO.updateRealEstate(24, "전세", 70000);
+		
+		return "수정 성공 : " + count;
+	}
+	
+	// id를 전달받아서 진행
+	@ResponseBody
+	@RequestMapping("/test04/1")
+	public String deleteRealEstate(@RequestParam("id") int id) {
+		
+		int count = realEstateBO.deleteRealEstate(id);
+		
+		return "삭제 성공 : " + count;
+		
+		
+	}
+	
 	
 }
