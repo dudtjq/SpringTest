@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매자 정보</title>
+<title>Insert title here</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <link rel="stylesheet" href="script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -13,17 +13,29 @@
 
 </head>
 <body>
+
+	<h1>공인중개사 정보</h1>
 	
-	<div class="container">
- 	
-	 	<h2>판매자 정보</h2>
-	 	<div><img alt="유저 프로필" width="150" src="${seller.profileImage}"></div> <br>
-	 	<div class="display-4">${seller.nickname}</div> <br>
-	 	<h3 class="text-warning">${seller.temperature}</h3>
- 	
- 	</div>
-
-
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>상호명</th>
+				<th>전화번호</th>
+				<th>주소</th>
+				<th>등급</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${realtor.id}</td>
+				<td>${realtor.office}</td>
+				<td>${realtor.phoneNumber}</td>
+				<td>${realtor.address}</td>
+				<td>${realtor.grade}</td>
+			</tr>
+		</tbody>	
+	</table>
 
 </body>
 </html>

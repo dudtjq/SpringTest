@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매자 정보</title>
+<title>공인중개사 추가</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <link rel="stylesheet" href="script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -14,16 +14,28 @@
 </head>
 <body>
 	
-	<div class="container">
+ <form method="post" action="/jsp/realtor/add">
+ 
+ 	<div class="container">
  	
-	 	<h2>판매자 정보</h2>
-	 	<div><img alt="유저 프로필" width="150" src="${seller.profileImage}"></div> <br>
-	 	<div class="display-4">${seller.nickname}</div> <br>
-	 	<h3 class="text-warning">${seller.temperature}</h3>
+	 	<h1>공인중개사 추가</h1>
+		
+			<label>상호명</label>	<br>
+			<input type="text" name="office" class="form-control col-2">	<br>
+			<label>전화번호</label>	<br>
+			<input type="text" name="phoneNumber" class="form-control col-4"> <br>
+			<label>주소</label> <br>
+			<input type="text" name="address" class="form-control col-2"> <br>
+			<label>등급</label> <br>
+			<input type="text" name="grade" class="form-control col-2"> <br>
+			
+			<button type="submit" class="form-control col-1 bg-info text-white">추가</button>
  	
  	</div>
-
-
+ 	
+	 
+ 
+ </form>
 
 </body>
 </html>

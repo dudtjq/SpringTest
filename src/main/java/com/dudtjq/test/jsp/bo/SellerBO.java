@@ -24,4 +24,9 @@ public class SellerBO {
 		
 	}
 	
+	public Seller getSeller(int id) {
+		
+		return sellerDAO.getSeller(id);
+	}
+	
 }

@@ -6,7 +6,7 @@
   
   <mapper namespace="com.dudtjq.test.jsp.dao.SellerDAO">
   
-  	<insert id="insertSeller" parameterType="com.dudtjq.test.jsp.model.Seller">
+  	<insert id="insertSeller" parameterType="map">
   		INSERT INTO
 			`seller`
 			(
@@ -28,7 +28,7 @@
   	
   	</insert>
   	
-  	<select id="selectSeller" resultType="com.dudtjq.test.jsp.model.Seller">
+  	<select id="selectLastSeller" resultType="com.dudtjq.test.jsp.model.Seller">
 		SELECT 
 				`id`
 				,`nickname`
@@ -41,9 +41,26 @@
 		ORDER BY
 		 	`id` DESC
 		LIMIT 
-			1 	
+			1 
 	
 	</select>
+	
+	  <select id="getSeller" resultType="com.dudtjq.test.jsp.model.Seller"
+  	parameterType="int">
+  		SELECT
+			`id`
+			,`nickname`
+			, `temperature`
+			, `profileImage`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`seller`
+		WHERE
+			`id` = #{id}
+			
+  	</select>
+	
   
   
   </mapper>

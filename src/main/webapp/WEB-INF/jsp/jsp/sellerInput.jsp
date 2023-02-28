@@ -22,13 +22,13 @@
 	 	<h1>판매자 추가</h1>
 		
 			<label>닉네임</label>	<br>
-			<input type="text" name="nickname">	<br>
+			<input type="text" name="nickname" class="form-control col-2">	<br>
 			<label>프로필 사진 url</label>	<br>
-			<input type="text" name="profileImage"> <br>
+			<input type="text" name="profileImage" class="form-control col-4"> <br>
 			<label>온도</label> <br>
-			<input type="text" name="temperature"> <br>
+			<input type="text" name="temperature" class="form-control col-2"> <br>
 			
-			<button type="submit">추가</button>
+			<button type="submit" class="form-control col-1 bg-info text-white">추가</button>
  	
  	</div>
  	

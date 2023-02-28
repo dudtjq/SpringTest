@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dudtjq.test.jsp.bo.SellerBO;
 import com.dudtjq.test.jsp.model.Seller;
+import com.dudtjq.test.mybatis.model.RealEstate;
 
 @Controller
 @RequestMapping("/jsp/seller")
@@ -31,24 +32,37 @@ public class SellerController {
 		
 		return "삽입 결과 : " + count;
 		 
-		 
-	}
-	
-	@GetMapping("/seller")
-	public String seller(Model model) {
-		
-		Seller lastSeller = sellerBO.getLastSeller();
-		
-		model.addAttribute("seller", lastSeller);
-		
-		return "jsp/seller";
 	}
 	
 	@GetMapping("/seller/Input")
 	public String sellerInput() {
-
+		
 		return "jsp/sellerInput";
 	}
+	
+	// Integer 는 숫자로도 객체로도 비교가 가능 하다. int는 객체 비교가 안됨!
+	Seller seller = null;
+	@GetMapping("/sellerInfo")
+	public String seller(Model model, @RequestParam(value="id", required=false) Integer id) {
+		
+		if(id != null) {
+			
+			seller = sellerBO.getSeller(id);
+			
+		}else {
+			
+			seller = sellerBO.getLastSeller();
+			
+		}
+		
+		model.addAttribute("seller", seller);
+	
+		return "jsp/seller";
+		
+		
+	}
+	
+	
 	
 	
 	
