@@ -14,20 +14,20 @@
 </head>
 <body>
 	
- <form method="post" action="/jsp/realtor/add">
+ <form method="Post" action="/jsp/realtor/add">
  
  	<div class="container">
  	
 	 	<h1>공인중개사 추가</h1>
 		
 			<label>상호명</label>	<br>
-			<input type="text" name="office" class="form-control col-2">	<br>
+			<input type="text" name="office" class="form-control col-4">	<br>
 			<label>전화번호</label>	<br>
 			<input type="text" name="phoneNumber" class="form-control col-4"> <br>
 			<label>주소</label> <br>
-			<input type="text" name="address" class="form-control col-2"> <br>
+			<input type="text" name="address" class="form-control col-4"> <br>
 			<label>등급</label> <br>
-			<input type="text" name="grade" class="form-control col-2"> <br>
+			<input type="text" name="grade" class="form-control col-4" placeholder="안심중개사,일반중개사,프리미엄중개사"> <br>
 			
 			<button type="submit" class="form-control col-1 bg-info text-white">추가</button>
  	

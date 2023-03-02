@@ -18,7 +18,7 @@ public class RealtorBO {
 		
 	}
 	
-	public int addUserObject(Realtor realtor) {
+	public int addRealtorObject(Realtor realtor) {
 		
 		return realtorDAO.insertUserByObject(realtor);
 		

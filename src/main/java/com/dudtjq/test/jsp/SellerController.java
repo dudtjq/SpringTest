@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dudtjq.test.jsp.bo.SellerBO;
 import com.dudtjq.test.jsp.model.Seller;
-import com.dudtjq.test.mybatis.model.RealEstate;
+
 
 @Controller
 @RequestMapping("/jsp/seller")
