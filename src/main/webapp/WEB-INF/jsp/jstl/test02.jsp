@@ -15,11 +15,13 @@
 </head>
 <body>
 
+	<%-- 1. JSTL forEach --%>
+
 	<div class="container ">
 		
 		<h1>HOT5</h1>
 		
-		<table class="table">
+		<table class="table text-center">
 			
 					<tr>
 						<th>순위</th>
@@ -28,13 +30,71 @@
 	
 		<c:forEach var="music" items="${musicRanking}" varStatus="status">
 		
-					<tr>
-						<td>${music}</td>
-					</tr>
-		
+			<tr>	
+				<td>${status.count}</td>
+				<td>${music}</td>
+			</tr>
+				
+		</c:forEach>
 			</table>
 		
-		</c:forEach>
+	
+	
+	</div>
+	<br>
+	
+	<%-- 2. JSTL 응용하기 --%>
+	
+	<div class="container">
+	
+	<h1>멤버십</h1>
+	
+		<table class="table text-center">
+			
+			<tr>
+				<th>이름</th>
+				<th>전화번호</th>
+				<th>등급</th>
+				<th>포인트</th>
+			</tr>
+			
+	<c:forEach var="member" items="${membership}" varStatus="status">
+	
+			<tr>
+				<td>${member.name} </td>
+				<td>${member.phoneNumber}</td>
+				<c:choose >
+					<c:when test="${member.grade eq 'VIP'}">
+						<td class="text-danger">${member.grade}</td>
+					</c:when>
+					
+					<c:when test="${member.grade eq 'GOLD'}">
+						<td class="text-warning">${member.grade}</td>
+					</c:when>
+					
+					<c:otherwise>
+						<td>${member.grade}</td>
+					</c:otherwise>
+				</c:choose>
+				<c:choose >
+					<c:when test="${member.point >= 5000}">
+						<td class="text-primary">${member.point}P</td>
+					</c:when>
+					
+					<c:otherwise>
+						<td>${member.point}P</td>
+					</c:otherwise>
+				</c:choose>
+				
+				
+			</tr>
+	
+	</c:forEach>		
+			
+			
+		
+		
+		</table>
 	
 	</div>
 	
