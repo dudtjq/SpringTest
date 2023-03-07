@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.dudtjq.test.jstl.dao.weatherhistoryDAO">
+
+  	<select id="selectWeatherhistory" resultType="com.dudtjq.test.jstl.model.Weatherhistory">
+  		SELECT
+			`id`
+			, `date`
+			, `weather`
+			, `temperatures`
+			, `precipitation`
+			, `microDust`
+			, `windSpeed`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`weatherhistory`
+  	
+  	
+  	</select>
+  	
+	<insert id="insertWeather" parameterType="map">
+			INSERT INTO
+					`weatherhistory`
+					(
+						`date`
+						, `weather`
+						, `temperatures`
+						, `precipitation`
+						, `microDust`
+						, `windSpeed`
+						, `createdAt`
+						, `updatedAt`
+					)
+					VALUE
+					(
+						#{date}
+		 				, #{weather}
+		 				, #{temperatures}
+		 				, #{precipitation}
+		 				, #{microDust}
+		 				, #{windSpeed}
+		 				, now()
+		 				, now()
+					)
+	</insert>
+
+
+
+</mapper> 
