@@ -32,8 +32,10 @@
 	                   <li class="nav-item"><a class="nav-link text-white font-weight-bold" href="#">관측 기후</a></li>
 	                </ul>
 	          	</div>
-				<div class="information d-flex ml-5">
-					<table calss="table text-center">
+				<div class="information ml-5 table text-center d-block">
+					
+					<table>
+						<h1 class="justify-content-start">과거 날씨</h1>
 							<tr>
 								<th>날짜</th>
 								<th>날씨</th>
@@ -55,8 +57,11 @@
 										<c:when test="${weatherhistory.weather eq '흐림'}">
 											<td><img src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></td>
 										</c:when>
-										<c:otherwise>
+										<c:when test="${weatherhistory.weather eq '비'}">
 											<td><img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
+										</c:when>
+										<c:otherwise>
+											<td>${weatherhistory.weather}</td>
 										</c:otherwise>
 									</c:choose>									
 									<td>${weatherhistory.temperatures }℃</td>

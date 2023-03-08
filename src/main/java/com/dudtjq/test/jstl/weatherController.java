@@ -55,8 +55,14 @@ public class weatherController {
 		
 		int count = weatherhistoryBO.addWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
 		
-		return "삽입결과 : " + count;
+		return "redirect:/s" + count;
 		
+	}
+	
+	@GetMapping("/weatherhistory/Input")
+	public String weatherhistoryInput() {
+		
+		return "jstl/test05Input";
 	}
 		
 
