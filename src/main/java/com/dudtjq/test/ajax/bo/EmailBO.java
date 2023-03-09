@@ -20,4 +20,21 @@ public class EmailBO {
 		
 	}
 	
+	public int addEmail(String name, String url) {
+		return emailDAO.insertEmail(name, url);
+	}
+	
+	public boolean isDuplicateUrl(String url) {
+		
+		int count = emailDAO.selectCountUrl(url);
+		
+		if(count == 0) {
+			// 중복이 안된 것임
+			return false;
+		}else {
+			return true;
+		}
+		
+	}
+	
 }

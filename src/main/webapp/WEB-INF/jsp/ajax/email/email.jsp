@@ -25,6 +25,7 @@
 						<th>No.</th>
 						<th>이름</th>
 						<th>주소</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,6 +35,7 @@
 							<td>${status.count }</td>
 							<td>${email.name }</td>
 							<td>${email.url }</td>
+							<td class="">삭제</td>
 						</tr>
 					</c:forEach>
 	

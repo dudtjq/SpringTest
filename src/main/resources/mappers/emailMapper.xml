@@ -16,5 +16,39 @@
 				`email`
  	
  	</select>	
+ 	
+ 	<select id="selectCountUrl" parameterType="string" resultType="int">
+ 		SELECT
+			count(1)
+		FROM
+			`email`
+		WHERE
+			`url` = #{url}
+ 	
+ 	</select>
+ 	
+ 	
+ 	<insert id="insertEmail" parameterType="com.dudtjq.test.ajax.model.Email">
+ 			INSERT INTO
+			`email`
+			(
+				`name`
+				, `url`
+				, `createdAt`
+				, `updatedAt`
+			)
+			VALUE
+			(
+				#{name}
+				, #{url}
+				, now()
+				, now()
+			
+			)	
+ 	
+ 	
+ 	</insert>
+ 	
+ 	
   	
   </mapper>
