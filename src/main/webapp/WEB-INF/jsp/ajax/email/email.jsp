@@ -9,6 +9,8 @@
 <meta charset="UTF-8">
 <title>email</title>
 
+		<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+	
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <link rel="stylesheet" href="script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -25,7 +27,7 @@
 						<th>No.</th>
 						<th>이름</th>
 						<th>주소</th>
-						<th></th>
+						<th>비고</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,7 +37,7 @@
 							<td>${status.count }</td>
 							<td>${email.name }</td>
 							<td>${email.url }</td>
-							<td class="">삭제</td>
+							<td class="delete-btn btn bg-danger text-white btn-sm" data-email-id="${email.id }">삭제</td>
 						</tr>
 					</c:forEach>
 	
@@ -46,6 +48,43 @@
 	
 	
 	</div>
+	
+	<script>
+	
+		$(document).ready(function(){
+			
+			$(".delete-btn").on("click", function(){
+				
+				// 가지고 하려고 하는 값을 객채화 한다$(this)
+				let id = $(this).data("email-id");
+			//	alert(id);
+				
+				$.ajax({
+					type:"get"
+					, url:"/ajax/email/delete"
+					, data:{"id":id}
+					, success:function(data){
+						if(data.result == "success"){
+							// 삭제
+							location.reload();
+						}else{
+							alert("삭제 에러");
+						}
+						
+					}
+					, error:function(){
+						alert("삭제 에러");
+					}
+					
+					
+				});
+
+			});
+			
+		});
+	
+	
+	</script>
 
 
 </body>

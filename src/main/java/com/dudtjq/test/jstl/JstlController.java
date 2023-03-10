@@ -89,9 +89,7 @@ public class JstlController {
 		candidates.add(563057); 
 		
 		model.addAttribute("candidates", candidates);
-		
-		
-		
+
 		
 		List<Map<String, Object>> cardBills = new ArrayList<>();
 

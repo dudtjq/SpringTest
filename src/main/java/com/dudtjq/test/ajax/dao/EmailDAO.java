@@ -18,4 +18,6 @@ public interface EmailDAO {
 	
 	public int selectCountUrl(@Param("url") String url);
 	
+	public int deleteEmail(@Param("id") int id);
+	
 }

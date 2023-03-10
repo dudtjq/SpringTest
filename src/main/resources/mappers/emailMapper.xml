@@ -18,6 +18,7 @@
  	</select>	
  	
  	<select id="selectCountUrl" parameterType="string" resultType="int">
+ 		
  		SELECT
 			count(1)
 		FROM
@@ -48,6 +49,24 @@
  	
  	
  	</insert>
+ 	
+ 	<delete id="deleteEmail" parameterType="int">
+ 	
+ 		DELETE
+	 	
+    		FROM `email`
+    		
+   		WHERE
+   		 
+   		 <![CDATA[
+   		 
+        	`id` = #{id}
+        
+        ]]>
+ 	
+ 	
+ 	
+ 	</delete>
  	
  	
   	

@@ -28,13 +28,22 @@ public class EmailBO {
 		
 		int count = emailDAO.selectCountUrl(url);
 		
-		if(count == 0) {
-			// 중복이 안된 것임
-			return false;
-		}else {
-			return true;
-		}
+//		if(count == 0) {
+//			// 중복이 안된 것임
+//			return false;
+//		}else {
+//			return true;
+//		}
+		
+		return count != 0;
 		
 	}
+	
+	public int deleteEmail(int id) {
+		
+		return emailDAO.deleteEmail(id);
+		
+	}
+	
 	
 }

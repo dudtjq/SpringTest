@@ -24,6 +24,7 @@ public class EmailController {
 	private EmailBO emailBO;
 	
 	@GetMapping("email")
+	@ResponseBody
 	public List<Email> emailList(Model model) {
 		
 		List<Email> emailList = emailBO.getEmailList();
@@ -68,15 +69,35 @@ public class EmailController {
 		
 		Map<String, Boolean> resultMap = new HashMap<>();
 		
-		if(emailBO.isDuplicateUrl(url)) {
-			// 중복
-			resultMap.put("is_duplicate", true);
-		}else {
-			// 중복 x
-			resultMap.put("is_duplicate", false);
-		}
+//		if(emailBO.isDuplicateUrl(url)) {
+//			// 중복
+//			resultMap.put("is_duplicate", true);
+//		}else {
+//			// 중복 x
+//			resultMap.put("is_duplicate", false);
+//		}
+		
+		resultMap.put("is_duplicate", emailBO.isDuplicateUrl(url));
 		
 		return resultMap;
+		
+	}
+
+	@GetMapping("/delete")
+	@ResponseBody
+	public String delete(@RequestParam(value="id", defaultValue="1") int id) {
+		
+		int count = emailBO.deleteEmail(id);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result", "success");
+		}else {
+			resultMap.put("result", "fail");
+		}
+		
+		return "삭제 성공 : " + count;
 		
 	}
 	
