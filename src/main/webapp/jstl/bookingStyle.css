@@ -40,3 +40,8 @@
 .text-input {width:300px !important;}
 
 address {font-size: 12px; color:gray;}
+
+.section{
+    width: 400px;
+    margin: auto;
+}

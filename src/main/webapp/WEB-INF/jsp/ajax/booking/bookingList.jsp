@@ -49,12 +49,22 @@
 					<c:forEach var="booking" items="${bookingList}" varStatus="status">
 					<tr>
 						<td>${booking.name }</td>
-						<td>${booking.date }</td>
+						<td><fmt:formatDate value="${booking.date }" pattern="yyyy년 M월 d일" /></td>
 						<td>${booking.day }</td>
 						<td>${booking.headcount }</td>
 						<td>${booking.phoneNumber }</td>
-						<td>${booking.state }</td>
-						<td>삭제</td>
+						<c:choose >
+							<c:when test="${booking.state eq '대기중'}">
+								<td class="text-info">${booking.state }</td>
+							</c:when>
+							<c:when test="${booking.state eq '확정'}">
+								<td class="text-success">${booking.state }</td>
+							</c:when>
+							<c:otherwise>
+								<td>${booking.state }</td>
+							</c:otherwise>
+						</c:choose>
+						<td class="delete-btn btn bg-danger text-white btn-sm" data-booking-id="${booking.id }">삭제</td>
 					</tr>		
 					</c:forEach>
 						
@@ -62,8 +72,53 @@
 			
 			
 			</table>
+			
+			<footer class="mt-3 ml-4">
+                <address>
+                    제주특별자치도 제주시 애월읍  <br>
+                    사업자등록번호: 111-22-255222 / 농어촌민박사업자지정 / 대표:김통목 <br>
+                    Copyright 2025 tongnamu All right reserved
+                </address>
+
+            </footer>
 	
 	</div>
+	
+	<script>
+	
+		$(document).ready(function(){
+			// class로 설정을 해둔다 id로 해둘 경우에는 각각이 아닌 하나의 객체로 보기 때문에 class로 지정!!
+			$(".delete-btn").on("click", function(){
+				// $(this). 을 사용하여 사용자가 사용하려는 하나의 객체를 불러온다!
+				// data-booking-id 에서 booking-id을 가로 안에 지정한다!
+				let id = $(this).data("booking-id");
+
+				$.ajax({
+					type:"get"
+					, url:"/ajax/booking/delete"
+					, data:{"id":id}
+					, success:function(data){
+						if(data.result == "success"){
+							// 삭제 location.reload(); 를 활용!!
+							location.reload();
+						}else{
+							alert("삭제 실패");
+						}
+						
+					}
+					, error:function(){
+						alert("삭제 에러");
+					}
+					
+					
+				});
+
+			});
+			
+		});
+	
+	
+	</script>
 
 
 </body>
