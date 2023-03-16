@@ -36,28 +36,13 @@
 				, `updatedAt
 			FROM
 				`booking`
-		 	WHERE	
+		 	WHERE
 		 	
-		 		<![CDATA[
-		 		
-		 			`name` = #{name}
-		 			
-		 		AND
-		 		
-		 			`date` = #{date}
-		 			
-		 		AND	
-		 		
-		 			`day` = #{day}
-		 			
-		 		AND 
-		 		 	`headcount` = #{headcount}
-		 		 	
-		 		AND  	
-		 		
-		 			`state` = #{state}
-		 			
-		 		]]>
+				`name` = #{name}
+			
+			AND 
+			
+				`phoneNumber` = #{phoneNumber}
 	
 	</select>
  	

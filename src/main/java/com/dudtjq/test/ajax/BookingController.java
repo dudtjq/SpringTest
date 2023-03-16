@@ -89,28 +89,35 @@ public class BookingController {
 	}
 	
 	@GetMapping("/check")
-	public Map<String, String> checkBooking(
+	public Map<String, Object> checkBooking(
 			@RequestParam("name") String name
-			, @RequestParam("phoneNumber") String phoneNumber
-			, Model model) {
+			, @RequestParam("phoneNumber") String phoneNumber) {
 		
-		int count = bookingBO.checkBooking(name, phoneNumber);
-		
-		model.addAttribute("name", name);
-		model.addAttribute("phoneNumber", phoneNumber);
-		 
-		Map<String, String> resultMap = new HashMap<>();
-		
-		if(count == 1) {
+		Booking booking = bookingBO.checkedBooking(name, phoneNumber);
+//		{
+//        "result":"success", 
+//		  "info": {
+	//		"id": 7,
+	//		"name": "황찬성",
+	//		"headcount": 25,
+	//		"day": 1,
+	//		"date": "2025-09-10T15:00:00.000+00:00",
+	//		"phoneNumber": "010-0000-2222",
+	//		"state": "확정",
+	//		"createdAt": "2023-01-25T09:10:56.000+00:00",
+	//		"updatedAt": "2023-01-25T09:10:56.000+00:00"
+//		   }
+//		}
+		Map<String, Object> resultMap = new HashMap<>();
+		// 조회 성공 : {"result":"success", "info":booking}
+		// 조회 실패 : {"result":"fail"}
+		if(booking != null) {
 			resultMap.put("result", "success");
-		}else {
+			resultMap.put("info", booking);
+		} else {
 			resultMap.put("result", "fail");
 		}
-		
 		return resultMap;
-		
-		
-		
 	}
 	
 		

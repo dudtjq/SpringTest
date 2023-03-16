@@ -50,17 +50,17 @@
                         <div class="member-input mt-3" id="member">
                             <div class="input-gorup form-inline">
                                 <label class="input-label">이름 :</label>
-                                <input type="text" class="form-control text-input" id="name">
+                                <input type="text" class="form-control text-input" id="nameInput">
                             </div>
                             <div class="input-gorup form-inline mt-3">
                                 <label class="input-label">전화번호 :</label>
-                                <input type="text" class="form-control text-input" id="phoneNumber">
+                                <input type="text" class="form-control text-input" id="phoneNumberInput">
                             </div>
 
                         </div>
 
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-success mt-3 mr-5" id="lookupBtn">조회 하기</button>
+                            <button class="btn btn-success mt-3 mr-5" id="findBtn">조회 하기</button>
                         </div>
                     </div>
                 </article>
@@ -88,6 +88,48 @@
     <script>
         $(document).ready(function() {
 
+        	
+        	$("#findBtn").on("click", function() {
+				let name = $("#nameInput").val();
+				let phoneNumber = $("#phoneNumberInput").val();
+				
+				if(name == "") {
+					alert("이름을 입력하세요");
+					return ;
+				}
+				
+				if(phoneNumber == "") {
+					alert("전화번호를 입력하세요");
+					return ;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/ajax/booking/search"
+					, data:{"name":name, "phoneNumber":phoneNumber}
+					, success:function(data) {
+						// result가 success 면 조회 결과 있다. 
+						// fail 이면 없다. 
+						
+						if(data.result == "fail") {
+							alert("조회된 결과가 없습니다");
+						} else {
+							let message = "이름 : " + data.info.name + "\n날짜 : " + data.info.date.substring(0, 10)
+							+ "\n일수 : " + data.info.day + "\n인원 : " + data.info.headcount + "\n상태 : " + data.info.state;
+							
+							alert(message);
+						}
+						
+						
+					}
+					, error:function() {
+						alert("조회 에러");
+					}
+				});
+        	});
+        	
+        	
+        	
             // 데이트 피커 셋팅
             $( "#date" ).datepicker({
                 minDate:0, 

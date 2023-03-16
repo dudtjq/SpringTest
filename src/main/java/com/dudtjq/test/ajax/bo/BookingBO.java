@@ -40,7 +40,7 @@ public class BookingBO {
 		
 	}
 	
-	public int checkBooking(
+	public Booking checkedBooking(
 			String name
 			, String phoneNumber
 			) {

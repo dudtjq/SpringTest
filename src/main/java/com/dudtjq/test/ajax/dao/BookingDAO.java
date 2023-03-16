@@ -24,7 +24,7 @@ public interface BookingDAO {
 	
 	public int deleteBookingId(@Param("id") int id);
 	
-	public int checkBookingList(
+	public Booking checkBookingList(
 			@Param("name") String name
 			, @Param("phoneNumber") String phoneNumber
 			);
